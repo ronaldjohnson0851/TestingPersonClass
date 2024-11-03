@@ -3,6 +3,8 @@ package com.zipcodewilmington.person;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Optional;
+
 /**
  * Created by leon on 2/12/18.
  */
@@ -10,11 +12,11 @@ public class TestPerson {
     @Test
     public void testDefaultConstructor() {
         // Given
-        String expectedName = "";
+        String expectedName = "Ron";
         Integer expectedAge = Integer.MAX_VALUE;
 
         // When
-        Person person = new Person();
+        Person person = new Person(expectedName, expectedAge);
 
         // Then
         String actualName = person.getName();
@@ -72,7 +74,7 @@ public class TestPerson {
     public void testSetName() {
         // Given
         Person person = new Person();
-        String expected = "Leon";
+        String expected = "Ron";
 
         // When
         person.setName(expected);
@@ -94,5 +96,28 @@ public class TestPerson {
         // Then
         Integer actual = person.getAge();
         Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void testNewTest() {
+        // Given
+        String expectedName = "Patrick";
+        Integer expectedAge = 10;
+        String expectedRace = "Human";
+        String expectedLastName = "Star";
+        String expectedMiddleName = "Yoyo";
+        Double expectedBirthday = 12.2;
+        String expectedHomeTown = "Bikini Bottom";
+
+        // When
+        Person person = new Person(expectedName, expectedAge, expectedRace,expectedLastName ,expectedMiddleName,expectedBirthday,expectedHomeTown);
+
+        // Then
+
+        Assert.assertEquals(person.getName(), expectedName);
+        Assert.assertEquals(person.getRace(), expectedRace);
+        Assert.assertEquals(person.getLastname(), expectedLastName);
+        Assert.assertEquals(person.getMiddlename(), expectedMiddleName);
+        Assert.assertEquals(person.getBirthday(), expectedBirthday, 0.001);
+        Assert.assertEquals(person.getHometown(), expectedHomeTown);
     }
 }
